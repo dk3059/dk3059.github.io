@@ -64,158 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-함수" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/27/%ED%95%A8%EC%88%98/" class="article-date">
-  <time datetime="2020-01-27T08:21:53.960Z" itemprop="datePublished">2020-01-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/27/%ED%95%A8%EC%88%98/">함수</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heaviside_step</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(x, np.ndarray):</span><br><span class="line">        <span class="keyword">return</span> np.where(x&gt;=<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.0</span> <span class="keyword">if</span> x == <span class="number">0</span> <span class="keyword">else</span> <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">x = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">sign = np.sign(x)</span><br><span class="line">step = heaviside_step(x)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">7</span>,<span class="number">4</span>))</span><br><span class="line">plt.subplot(<span class="number">121</span>)</span><br><span class="line">plt.plot(x, sign, <span class="string">"r-"</span>)</span><br><span class="line">plt.title(<span class="string">"부호 함수"</span>)</span><br><span class="line">plt.ylim(<span class="number">-1.5</span>, <span class="number">1.5</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.plot(x, step, <span class="string">"k-"</span>)</span><br><span class="line">plt.title(<span class="string">"헤비사이드 스텝 함수"</span>)</span><br><span class="line">plt.ylim(<span class="number">-1.5</span>, <span class="number">1.5</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%ED%95%A8%EC%88%98_files/%ED%95%A8%EC%88%98_0_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.e</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>2.718281828459045</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(<span class="number">-10</span>), np.exp(<span class="number">-1</span>), np.exp(<span class="number">-0.1</span>), np.exp(<span class="number">0</span>), np.exp(<span class="number">0.1</span>), np.exp(<span class="number">1</span>), np.exp(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>(4.5399929762484854e-05,
- 0.36787944117144233,
- 0.9048374180359595,
- 1.0,
- 1.1051709180756477,
- 2.718281828459045,
- 22026.465794806718)</code></pre><h3 id="지수함수"><a href="#지수함수" class="headerlink" title="지수함수"></a>지수함수</h3><ul>
-<li>밑을 오일러 수 e로 하여 거듭제곱을 하는 함수를 지수 함수라고 한다.</li>
-<li>지수 함수의 특성<ul>
-<li>양수를 거듭제곱한 값이므로 항상 양수다.</li>
-<li>x=0 일 때 1이 된다.</li>
-<li>x가 양의 무한대로 가면, 양의 무한대로 다가간다.</li>
-<li>x가 음의 무한대로 가면, 0으로 다가간다.</li>
-<li>x<sub>1</sub> &gt; x<sub>2</sub> 이면 expx<sub>1</sub> &gt; expx<sub>2</sub>이다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">xx = np.linspace(<span class="number">-2</span>, <span class="number">2</span>, <span class="number">100</span>)</span><br><span class="line">yy = np.exp(xx)</span><br><span class="line">plt.title(<span class="string">"지수함수"</span>)</span><br><span class="line">plt.plot(xx, yy)</span><br><span class="line">plt.axhline(<span class="number">1</span>, c=<span class="string">'r'</span>, ls=<span class="string">"--"</span>)</span><br><span class="line">plt.axhline(<span class="number">0</span>, c=<span class="string">'r'</span>, ls=<span class="string">"--"</span>)</span><br><span class="line">plt.axvline(<span class="number">0</span>, c=<span class="string">'r'</span>, ls=<span class="string">"--"</span>)</span><br><span class="line">plt.xlabel(<span class="string">"$x$"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"$\exp(x)$"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%ED%95%A8%EC%88%98_files/%ED%95%A8%EC%88%98_4_0.png" alt="png"></p>
-<p> 두 지수함수의 곱의 값은 입력값 합의 지수함수 값과 같다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(<span class="number">2</span> + <span class="number">3</span>), np.exp(<span class="number">2</span>) * np.exp(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>(148.4131591025766, 148.4131591025766)</code></pre><h3 id="로지스틱함수"><a href="#로지스틱함수" class="headerlink" title="로지스틱함수"></a>로지스틱함수</h3><ul>
-<li>로지스틱 함수는 지수함수를 변형한 함수로 회귀분석이나 인공신경망에서 자주 사용된다.</li>
-</ul>
-<p>$$<br>\begin{align}<br>\sigma(x) = \dfrac{1}{1 + \exp(-x)}<br>\end{align}<br>$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logistic</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line">xx = np.linspace(<span class="number">-10</span>, <span class="number">10</span>, <span class="number">100</span>)</span><br><span class="line">plt.plot(xx, logistic(xx))</span><br><span class="line">plt.title(<span class="string">"로지스틱함수"</span>)</span><br><span class="line">plt.xlabel(<span class="string">"$x$"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"$\sigma(x)$"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%ED%95%A8%EC%88%98_files/%ED%95%A8%EC%88%98_8_0.png" alt="png"></p>
-<h3 id="로그-함수"><a href="#로그-함수" class="headerlink" title="로그 함수"></a>로그 함수</h3><ul>
-<li>로그 함수의 특징<ul>
-<li>$x$ 값, 즉 입력변수의 값이 양수여야 한다. 0이거나 음수이면 정의되지 않는다.</li>
-<li>$x&gt;1$ 이면 $y&gt;0$ (양수)</li>
-<li>$x=1$ 이면 $y=0$</li>
-<li>$0&lt;x&lt;1$ 이면 $y&lt;0$(음수)</li>
-<li>$x_1 &gt; x_2$이면 $logx_1 &gt; logx_2$이다.</li>
-</ul>
-</li>
-<li>로그 함수의 성질<ul>
-<li>로그함수는 곱하기를 더하기로 반환한다.</li>
-<li>로그 함수는 0부터 1사이의 작은 값을 확대시켜 보여준다.</li>
-<li>어떤 함수에 로그를 적용해도 함수의 최고점, 최저점의 위치는 변하지 않는다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">xx = np.linspace(<span class="number">0.01</span>, <span class="number">8</span>, <span class="number">100</span>)</span><br><span class="line">yy = np.log(xx)</span><br><span class="line">plt.title(<span class="string">"로그함수"</span>)</span><br><span class="line">plt.plot(xx, yy)</span><br><span class="line">plt.axhline(<span class="number">0</span>, c=<span class="string">'r'</span>, ls=<span class="string">"--"</span>)</span><br><span class="line">plt.axvline(<span class="number">0</span>, c=<span class="string">'r'</span>, ls=<span class="string">"--"</span>)</span><br><span class="line">plt.axvline(<span class="number">1</span>, c=<span class="string">'r'</span>, ls=<span class="string">"--"</span>)</span><br><span class="line">plt.xlabel(<span class="string">"$x$"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"$\log(x)$"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%ED%95%A8%EC%88%98_files/%ED%95%A8%EC%88%98_10_0.png" alt="png"></p>
-<h3 id="소프트-플러스-함수"><a href="#소프트-플러스-함수" class="headerlink" title="소프트 플러스 함수"></a>소프트 플러스 함수</h3><ul>
-<li>소프트플러스 함수는 지수함수와 로그함수를 결합하여 만든 함수로 0을 인수로 갖는 최대함수와 비슷하지만 $x=0$ 근처에서 값이 부드럽게 변한다는 장점이 있다.</li>
-</ul>
-<p>$$\xi = log(1+exp(x))$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softplus</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> np.log(<span class="number">1</span> + np.exp(x))</span><br><span class="line"></span><br><span class="line">xx = np.linspace(<span class="number">-10</span>, <span class="number">10</span>, <span class="number">100</span>)</span><br><span class="line">plt.plot(xx, softplus(xx))</span><br><span class="line">plt.title(<span class="string">"소프트플러스함수"</span>)</span><br><span class="line">plt.xlabel(<span class="string">"$x$"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"Softplus($x$)"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="%ED%95%A8%EC%88%98_files/%ED%95%A8%EC%88%98_12_0.png" alt="png"></p>
-<h3 id="다변수함수"><a href="#다변수함수" class="headerlink" title="다변수함수"></a>다변수함수</h3><ul>
-<li>복수의 입력변수를 가지는 함수</li>
-</ul>
-<p>$$ z = f(x,y)$$</p>
-<h3 id="분리-가능-다변수함수"><a href="#분리-가능-다변수함수" class="headerlink" title="분리 가능 다변수함수"></a>분리 가능 다변수함수</h3><ul>
-<li><p>단변수함수의 곱으로 표현 가능한 다변수 함수</p>
-</li>
-<li><p>추후 확률변수에서 중요한 역할</p>
-<p>$$ f(x,y) = f_1(x)f_2(y) $$</p>
-</li>
-</ul>
-<h3 id="다변수-다출력-함수"><a href="#다변수-다출력-함수" class="headerlink" title="다변수 다출력 함수"></a>다변수 다출력 함수</h3><ul>
-<li>입력변수 뿐 아니라 출력변수도 여러개인 함수</li>
-</ul>
-<p>$$ y = S(x_1, x_2, x_3) $$</p>
-<ul>
-<li>출력 벡터의 특징<ul>
-<li>모든 출력 원소는 0과 1 사잇값을 갖는다.</li>
-<li>모든 출력 원소의 합은 1이다.</li>
-<li>입력 원소의 크기 순서와 출력 원소의 크기 순서가 같다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span><span class="params">(x,w)</span> :</span></span><br><span class="line">    e = np.exp(w * x)</span><br><span class="line">    <span class="keyword">return</span> np.exp(w * x) / e.sum()</span><br><span class="line"></span><br><span class="line">x = [<span class="number">2.0</span>, <span class="number">1.0</span>, <span class="number">0.5</span>]</span><br><span class="line">y = softmax(x, np.ones(<span class="number">3</span>))</span><br><span class="line">y</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>array([0.62853172, 0.2312239 , 0.14024438])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sum(y)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>1.0</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 가중치가 커지면 최대값과 최소값의 차이가 더 멀어진다.</span></span><br><span class="line">softmax(x, <span class="number">4</span> * np.ones(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>array([0.97962921, 0.01794253, 0.00242826])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/27/%ED%95%A8%EC%88%98/" data-id="ck5w6sbd900003ouzc6mm3egc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Tuple_List" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/27/Tuple_List/" class="article-date">
@@ -383,7 +231,7 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/27/Tuple_List/" data-id="ck5vz9dya0000scuz0orkevkv" class="article-share-link">Share</a>
+      <a data-url="http://dk3059.github.io/2020/01/27/Tuple_List/" data-id="ck5w71lg600013cuzf7tp01ym" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,7 +304,7 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/27/Numpy/" data-id="ck5vyvlm40000z0uz9isu0wdh" class="article-share-link">Share</a>
+      <a data-url="http://dk3059.github.io/2020/01/27/Numpy/" data-id="ck5w71lfy00003cuz0u47drug" class="article-share-link">Share</a>
       
       
     </footer>
@@ -492,7 +340,7 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/22/hexo-test/" data-id="ck5p1qg240001wsuz9dtceayj" class="article-share-link">Share</a>
+      <a data-url="http://dk3059.github.io/2020/01/22/hexo-test/" data-id="ck5w71lg900023cuz4ffh0z9q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -541,7 +389,7 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/22/hello-world/" data-id="ck5p1qg1v0000wsuz83bs1p08" class="article-share-link">Share</a>
+      <a data-url="http://dk3059.github.io/2020/01/22/hello-world/" data-id="ck5w71lgb00033cuzgw9s0smz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,10 +428,6 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2020/01/27/%ED%95%A8%EC%88%98/">함수</a>
-          </li>
         
           <li>
             <a href="/2020/01/27/Tuple_List/">Tuple_List</a>
