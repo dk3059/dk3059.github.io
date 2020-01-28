@@ -5,17 +5,17 @@
   
 
   
-  <title>hexo-test | Hexo</title>
+  <title>PCA | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="What is hexoWhen use hexoHow to use hexo">
+  <meta name="description" content="PCA 데이터 간 변이 규칙을 찾아낼 때 PCA를 이용한다. 주성분 분석 또는 차원축소라고도 한다. 가능한 한 쓸모 있는 정보를 유지하면서 더 적은 차원의 찬원축소 벡터로 선형변환 하고자 하는 것이다. PCA의 목표는 변환결과인 차원축소 벡터가 원래의 벡터가 가졌던 정보와 가장 유사하게 되는 변환행렬 값을 찾는 것이다.  사이킷런의 PCA 기능 사이킷런의">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo-test">
-<meta property="og:url" content="http://dk3059.github.io/2020/01/22/hexo-test/index.html">
+<meta property="og:title" content="PCA">
+<meta property="og:url" content="http://dk3059.github.io/2020/01/28/PCA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="What is hexoWhen use hexoHow to use hexo">
+<meta property="og:description" content="PCA 데이터 간 변이 규칙을 찾아낼 때 PCA를 이용한다. 주성분 분석 또는 차원축소라고도 한다. 가능한 한 쓸모 있는 정보를 유지하면서 더 적은 차원의 찬원축소 벡터로 선형변환 하고자 하는 것이다. PCA의 목표는 변환결과인 차원축소 벡터가 원래의 벡터가 가졌던 정보와 가장 유사하게 되는 변환행렬 값을 찾는 것이다.  사이킷런의 PCA 기능 사이킷런의">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-22T07:52:41.000Z">
-<meta property="article:modified_time" content="2020-01-22T08:28:12.431Z">
+<meta property="article:published_time" content="2020-01-28T06:57:52.229Z">
+<meta property="article:modified_time" content="2020-01-28T06:57:52.229Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hexo-test" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-PCA" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/22/hexo-test/" class="article-date">
-  <time datetime="2020-01-22T07:52:41.000Z" itemprop="datePublished">2020-01-22</time>
+    <a href="/2020/01/28/PCA/" class="article-date">
+  <time datetime="2020-01-28T06:57:52.229Z" itemprop="datePublished">2020-01-28</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo-test
+      PCA
     </h1>
   
 
@@ -88,11 +88,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="What-is-hexo"><a href="#What-is-hexo" class="headerlink" title="What is hexo"></a>What is hexo</h2><h2 id="When-use-hexo"><a href="#When-use-hexo" class="headerlink" title="When use hexo"></a>When use hexo</h2><h2 id="How-to-use-hexo"><a href="#How-to-use-hexo" class="headerlink" title="How to use hexo"></a>How to use hexo</h2>
+        <h3 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h3><ul>
+<li>데이터 간 변이 규칙을 찾아낼 때 PCA를 이용한다.</li>
+<li>주성분 분석 또는 차원축소라고도 한다.</li>
+<li>가능한 한 쓸모 있는 정보를 유지하면서 더 적은 차원의 찬원축소 벡터로 선형변환 하고자 하는 것이다.</li>
+<li>PCA의 목표는 변환결과인 차원축소 벡터가 원래의 벡터가 가졌던 정보와 가장 유사하게 되는 변환행렬 값을 찾는 것이다.</li>
+</ul>
+<h3 id="사이킷런의-PCA-기능"><a href="#사이킷런의-PCA-기능" class="headerlink" title="사이킷런의 PCA 기능"></a>사이킷런의 PCA 기능</h3><ul>
+<li>사이킷런의 decomposition 서브패키지는 PCA분석을 위한 PCA 클래스를 제공한다.<ul>
+<li>입력 인수 :<ul>
+<li>n_components : 정수</li>
+</ul>
+</li>
+<li>매서드 :<ul>
+<li>fit_transform() : 특징행렬을 낮은 차원의 근사행렬로 변환</li>
+<li>inverse_transform() : 변환된 근사행렬을 원래의 차원으로 복귀</li>
+</ul>
+</li>
+<li>속성 :<ul>
+<li>mean_ : 평균벡터</li>
+<li>components_ : 주성분 벡터</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/22/hexo-test/" data-id="ck5w72z6a0002w8uzfb6o3sw1" class="article-share-link">Share</a>
+      <a data-url="http://dk3059.github.io/2020/01/28/PCA/" data-id="ck5xj4glf0000g4uz872b30xg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -101,19 +126,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/01/27/Numpy/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Numpy
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/22/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/01/28/Eigen_decomposition/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Eigen_decomposition</div>
     </a>
   
 </nav>
