@@ -64,6 +64,228 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Eigen_decomposition" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/28/Eigen_decomposition/" class="article-date">
+  <time datetime="2020-01-28T06:36:13.959Z" itemprop="datePublished">2020-01-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/28/Eigen_decomposition/">Eigen_decomposition</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="고윳값-분해"><a href="#고윳값-분해" class="headerlink" title="고윳값 분해"></a>고윳값 분해</h3><ul>
+<li>고윳값과 고유벡터를 찾는 작업</li>
+<li>N차원 정방행렬 A에 대해<ol>
+<li>행렬 A는 N개의 고윳값-고유벡터를 가진다.</li>
+<li>행렬의 대각합은 모든 고윳값의 곱과 같다.</li>
+<li>행렬의 행렬식은 모든 고윳값의 곱과 같다.</li>
+<li>행렬 A가 대칭행렬이면 N개의 실수 고윳값을 가지며 고유벡터들이 서로 직교한다.</li>
+<li>행렬 A가 대칭행렬이고 고윳값이 모두 양수이면 양의 정부호이고 역행렬이 존재한다. 역도 성립한다.</li>
+<li>행렬 A가 어떤 행렬 X의 분산행렬 X.T X이면 0 또는 양의 고윳값을 가진다.</li>
+<li>행렬 X가 풀랭크이면 분산행렬 X.T X는 역행렬이 존재한다.</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="넘파이를-사용한-고유분해"><a href="#넘파이를-사용한-고유분해" class="headerlink" title="넘파이를 사용한 고유분해"></a>넘파이를 사용한 고유분해</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">w,V = np.linalg.eig(A)</span><br><span class="line">print(w)</span><br><span class="line">print(V)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[3. 1.]
+[[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B = np.array([[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">1</span>]])</span><br><span class="line">w, V = np.linalg.eig(B)</span><br><span class="line">print(w)</span><br><span class="line">print(V)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[ 4. -1.]
+[[ 0.83205029 -0.70710678]
+ [ 0.5547002   0.70710678]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C = np.array([[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]])</span><br><span class="line">w, V = np.linalg.eig(C)</span><br><span class="line">print(w)</span><br><span class="line">print(V)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1. 1.]
+[[ 1.00000000e+00 -1.00000000e+00]
+ [ 0.00000000e+00  2.22044605e-16]]</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D = np.array([[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">1</span>]])</span><br><span class="line">w1, V1 = np.linalg.eig(D)</span><br><span class="line">w1, V1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(array([ 4., -1.]), array([[ 0.83205029, -0.70710678],
+        [ 0.5547002 ,  0.70710678]]))</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F = np.array([[<span class="number">1</span>,<span class="number">1</span>], [<span class="number">1</span>,<span class="number">0</span>]])</span><br><span class="line">w1, V1 = np.linalg.eig(F)</span><br><span class="line">w1, V1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(array([ 1.61803399, -0.61803399]), array([[ 0.85065081, -0.52573111],
+        [ 0.52573111,  0.85065081]]))</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E = np.array([[<span class="number">2</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">2</span>]])</span><br><span class="line">w1, V1 = np.linalg.eig(E)</span><br><span class="line">w1, V1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(array([3., 1.]), array([[ 0.70710678, -0.70710678],
+        [ 0.70710678,  0.70710678]]))</code></pre><h3 id="대각화"><a href="#대각화" class="headerlink" title="대각화"></a>대각화</h3><ul>
+<li>만약 고유백터행렬의 역행렬이 존재한다면 행렬을 고유벡터행렬과 고윳값행렬의 곱으로 표현할 수 있다.</li>
+<li>행렬을 대각화할 수 있으면 대각화가능 행렬이라고 한다.</li>
+<li>행렬이 대각화가능하려면 고유벡터가 선형독립이어야 한다.</li>
+<li>대각화가능한 행렬에 0인 고유값이 없으면 항상 역행렬이 존재한다.</li>
+<li>행렬 A가 실수인 대칭행렬이면 고유값이 실수이고 고유벡터는 서로 직교한다.</li>
+<li>실수인 대칭행렬은 항상 대각화 가능하다.</li>
+</ul>
+<p>A = V$\Lambda$V<sup>-1<sup/></p>
+<p>연습문제 3.3.6</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">1</span>]])</span><br><span class="line">w1, V1 = np.linalg.eig(A)</span><br><span class="line">V1_inv = np.linalg.inv(V1)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V1 @ np.diag(w1) @ V1_inv</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[2., 3.],
+       [2., 1.]])</code></pre><p>연습문제 3.3.7</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># V의 랭크가 1이므로 역행렬이 존재하지 않는다. 따라서 대각화할 수 없다.</span></span><br><span class="line">B = np.array([[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]])</span><br><span class="line">w,V = np.linalg.eig(B)</span><br><span class="line">print(V)</span><br><span class="line">print(np.linalg.matrix_rank(V))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[ 1.00000000e+00 -1.00000000e+00]
+ [ 0.00000000e+00  2.22044605e-16]]
+1</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B = np.array([[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>]])</span><br><span class="line">w1, V1 = np.linalg.eig(B)</span><br><span class="line">w1, V1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(array([1., 1.]), array([[ 1.00000000e+00, -1.00000000e+00],
+        [ 0.00000000e+00,  2.22044605e-16]]))</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">V1_inv = np.linalg.inv(V1)</span><br><span class="line">V1 @ np.diag(w1) @ V1_inv</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1., 0.],
+       [0., 1.]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 1],
+       [0, 1]])</code></pre><p>연습문제 3.3.8</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">1</span>]])</span><br><span class="line">w1, V1 = np.linalg.eig(A)</span><br><span class="line">V1_inv = np.linalg.inv(V1)</span><br><span class="line">W1 = np.diag(w1)</span><br><span class="line">W1_inv = np.linalg.inv(W1)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">V1 @ W1_inv @ V1_inv</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[-0.25,  0.75],
+       [ 0.5 , -0.5 ]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A_inv = np.linalg.inv(A)</span><br><span class="line">A_inv</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[-0.25,  0.75],
+       [ 0.5 , -0.5 ]])</code></pre><h3 id="대칭행렬의-고유분해"><a href="#대칭행렬의-고유분해" class="headerlink" title="대칭행렬의 고유분해"></a>대칭행렬의 고유분해</h3><ul>
+<li>행렬 A가 실수인 대칭행렬이면 고유값이 실수이고 고유벡터는 서로 직교한다.</li>
+<li>실수인 대칭행렬은 항상 대각화가능하다.</li>
+<li>대칭행렬이 양의 정부호이면 고윳값은 모두 양수이다. 역도 성립한다.</li>
+<li>대칭행렬이 양의 준정부호이면 고윳값은 모두 0이거나 양수다. 역도 성립한다.</li>
+</ul>
+<h4 id="대칭행렬을-랭크-1-행렬의-합으로-분해"><a href="#대칭행렬을-랭크-1-행렬의-합으로-분해" class="headerlink" title="대칭행렬을 랭크-1 행렬의 합으로 분해"></a>대칭행렬을 랭크-1 행렬의 합으로 분해</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">60</span>, <span class="number">30</span>, <span class="number">20</span>], [<span class="number">30</span>, <span class="number">20</span>, <span class="number">15</span>],[<span class="number">20</span>, <span class="number">15</span>, <span class="number">12</span>]])</span><br><span class="line">w, V = np.linalg.eig(A)</span><br><span class="line">w1, w2, w3 = w</span><br><span class="line">v1 = V[:, <span class="number">0</span>:<span class="number">1</span>]</span><br><span class="line">v2 = V[:, <span class="number">1</span>:<span class="number">2</span>]</span><br><span class="line">v3 = V[:, <span class="number">2</span>:<span class="number">3</span>]</span><br><span class="line">A1 = v1 @ v1.T</span><br><span class="line">A2 = v2 @ v2.T</span><br><span class="line">A3 = v3 @ v3.T</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([84.49913563,  7.33962395,  0.16124042])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w1 * A1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[57.79768857, 32.13739648, 22.59357583],
+       [32.13739648, 17.8694387 , 12.56276371],
+       [22.59357583, 12.56276371,  8.83200836]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w2 * A2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 2.19968372, -2.12270483, -2.60775134],
+       [-2.12270483,  2.04841985,  2.51649195],
+       [-2.60775134,  2.51649195,  3.09152039]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w3 * A3</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 0.00262772, -0.01469165,  0.01417551],
+       [-0.01469165,  0.08214145, -0.07925566],
+       [ 0.01417551, -0.07925566,  0.07647125]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w1 * A1 + w2 * A2 + w3 * A3</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[60., 30., 20.],
+       [30., 20., 15.],
+       [20., 15., 12.]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[60, 30, 20],
+       [30, 20, 15],
+       [20, 15, 12]])</code></pre><p>만약 0인 고윳값이 없다면 역행렬도 다음처럼 N개의 랭크 1 행렬의 합으로 표시할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A_inv = np.linalg.inv(A)</span><br><span class="line">A_inv</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 0.15, -0.6 ,  0.5 ],
+       [-0.6 ,  3.2 , -3.  ],
+       [ 0.5 , -3.  ,  3.  ]])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>/w1 * A1 + <span class="number">1</span>/w2 * A2 +<span class="number">1</span>/w3 * A3</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 0.15, -0.6 ,  0.5 ],
+       [-0.6 ,  3.2 , -3.  ],
+       [ 0.5 , -3.  ,  3.  ]])</code></pre><h3 id="분산행렬"><a href="#분산행렬" class="headerlink" title="분산행렬"></a>분산행렬</h3><ul>
+<li>행렬 X에 대해서 X.T X인 정방행렬을 분산행렬이라고 한다.</li>
+<li>분산행렬은 양의 준정부호이고 고유값은 0보다 같거나 크다.</li>
+<li>행렬 X가 풀랭크이면 이 행렬의 분산행렬 X.T X의 역행렬이 존재한다.</li>
+</ul>
+<p>연습문제 3.3.9</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line"></span><br><span class="line">COV = X.T @ X </span><br><span class="line">w, V = np.linalg.eig(COV)</span><br><span class="line">w</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([9.20830507e+03, 3.15454317e+02, 1.19780429e+01, 3.55257020e+00])</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_boston</span><br><span class="line">boston = load_boston()</span><br><span class="line">X = boston.data</span><br><span class="line"></span><br><span class="line">COV = X.T @ X</span><br><span class="line">w, V = np.linalg.eig(COV)</span><br><span class="line">w</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1.58386796e+08, 1.18747372e+07, 4.17002244e+05, 1.61644573e+05,
+       2.52697480e+04, 1.47629635e+04, 8.18396001e+03, 6.07326738e+03,
+       4.23577535e+03, 6.06399504e+02, 3.27412564e+02, 3.04157837e+01,
+       2.19326965e+00])</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dk3059.github.io/2020/01/28/Eigen_decomposition/" data-id="ck5xicla70000n4uzdfhb12fw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Singular_decomposition" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/28/Singular_decomposition/" class="article-date">
@@ -675,6 +897,10 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
       <ul>
         
           <li>
+            <a href="/2020/01/28/Eigen_decomposition/">Eigen_decomposition</a>
+          </li>
+        
+          <li>
             <a href="/2020/01/28/Singular_decomposition/">Singular_decomposition</a>
           </li>
         
@@ -688,10 +914,6 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
         
           <li>
             <a href="/2020/01/22/hexo-test/">hexo-test</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/22/hello-world/">Hello World</a>
           </li>
         
       </ul>
