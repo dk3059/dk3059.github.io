@@ -64,6 +64,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/30/Module/" class="article-date">
+  <time datetime="2020-01-30T02:26:35.892Z" itemprop="datePublished">2020-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/30/Module/">Module</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><ul>
+<li>파이썬에서 모듈은 def를 사용하여 정의한다.</li>
+<li>def가 실행되면, 함수의 객체와 참조가 같이 생성된다.</li>
+<li>반환값을 정의하지 않으면, 파이썬은 자동으로 None을 반환한다.</li>
+</ul>
+<h3 id="1-스택과-활성화-레코드"><a href="#1-스택과-활성화-레코드" class="headerlink" title="1. 스택과 활성화 레코드"></a>1. 스택과 활성화 레코드</h3><ul>
+<li>함수가 호출될 때마다 활성화 레코드가 생성된다.</li>
+<li>활성화 레코드는 다음과 같은 순서로 처리된다.<ol>
+<li>함수의 실제 매개변수를 스텍에 저장한다.</li>
+<li>변환 주소를 스택에 저장한다.</li>
+<li>스택의 최상위 인덱스를 함수의 지역변수에 필요한 총량만큼 늘린다.</li>
+<li>함수로 건너뛴다.</li>
+</ol>
+</li>
+<li>활성화 레코드를 풀어내는 절차는 다음과 같다.<ol>
+<li>스택의 최상위 인덱스는 함수에 소비된 총 메모리양만큼 감소한다. </li>
+<li>반환 주소를 스택에서 빼낸다.</li>
+<li>스택의 최상위 인덱스는 함수의 실제 매개변수만큼 감소한다.</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-모듈의-기본값"><a href="#2-모듈의-기본값" class="headerlink" title="2. 모듈의 기본값"></a>2. 모듈의 기본값</h3><ul>
+<li>모듈을 생성할 때, 함수 또는 메서드에서 가변 객체를 기본값으로 사용해서는 안된다.</li>
+<li>따라서 다음과 같이 사용하는 것이 좋다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(number, number_list = None)</span>:</span> <span class="comment"># number_list = [] 으로 사용하는 것은 좋지 않음.</span></span><br><span class="line">    <span class="keyword">if</span> number_list <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        number_list = []</span><br><span class="line">    number_list.append(number)</span><br><span class="line">    <span class="keyword">return</span> number_list</span><br><span class="line"></span><br><span class="line">append(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[7]</code></pre><h3 id="3-init-py-파일"><a href="#3-init-py-파일" class="headerlink" title="3. __ init __ .py 파일"></a>3. __ init __ .py 파일</h3><ul>
+<li>패키지는 모듈과 __ init__.py 파일이 있는 디렉터리이다.</li>
+<li>from 폴더이름 import * : 이름이 __ 로 시작하는 모듈을 제외한 모듈의 모든 객체를 불러온다.</li>
+<li>python -c import 모듈 : 터미널에서 특정 모듈이 있는지 확인할 수 있다.</li>
+</ul>
+<h3 id="4-name-변수"><a href="#4-name-변수" class="headerlink" title="4. name 변수"></a>4. <strong>name</strong> 변수</h3><ul>
+<li>파이썬은 모듈을 임포트 할 때마다 __ name __이라는 변수를 만들고, 모듈 이름을 저장한다.</li>
+</ul>
+<h3 id="5-컴파일된-바이트코드-모듈"><a href="#5-컴파일된-바이트코드-모듈" class="headerlink" title="5. 컴파일된 바이트코드 모듈"></a>5. 컴파일된 바이트코드 모듈</h3><ul>
+<li>컴파일러가 사용하는 바이트 컴파일 코드는 표준모듈을 많이 사용하는 프로그램의 시작시간을 줄이기 위한 것이다.</li>
+<li>-0 플래그를 사용하여 파이썬 인터프리터를 호출하면, 최적화된 코드가 생성되어 .pyo 파일에 저장된다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### 6. sys 모듈</span></span><br><span class="line"> - sys.path는 인터프리터가 모듈을 검색할 경로를 담은 문자열 리스트다.</span><br><span class="line"> - sys.path 변수는 PYTHONPATH 환경변수 또는 내장된 기본값 경로로 초기화 된다.</span><br><span class="line"> - 환경변수를 수정하면 모듈 경로를 추가하거나 임시로 모듈 경로를 추가할 수 있다.</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dk3059.github.io/2020/01/30/Module/" data-id="ck604b5tm0000j4uz5em2598l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Collection_data_structure" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/30/Collection_data_structure/" class="article-date">
@@ -1197,42 +1276,6 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
 
 
   
-    <article id="post-hexo-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/22/hexo-test/" class="article-date">
-  <time datetime="2020-01-22T07:52:41.000Z" itemprop="datePublished">2020-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/hexo-test/">hexo-test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="What-is-hexo"><a href="#What-is-hexo" class="headerlink" title="What is hexo"></a>What is hexo</h2><h2 id="When-use-hexo"><a href="#When-use-hexo" class="headerlink" title="When use hexo"></a>When use hexo</h2><h2 id="How-to-use-hexo"><a href="#How-to-use-hexo" class="headerlink" title="How to use hexo"></a>How to use hexo</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dk3059.github.io/2020/01/22/hexo-test/" data-id="ck60372x2000958uz9cvjdt0p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1269,6 +1312,10 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
       <ul>
         
           <li>
+            <a href="/2020/01/30/Module/">Module</a>
+          </li>
+        
+          <li>
             <a href="/2020/01/30/Collection_data_structure/">Collection_data_structure</a>
           </li>
         
@@ -1282,10 +1329,6 @@ NameError: name &apos;a&apos; is not defined</code></pre><figure class="highligh
         
           <li>
             <a href="/2020/01/28/Set/">Set</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/28/PCA/">PCA</a>
           </li>
         
       </ul>
